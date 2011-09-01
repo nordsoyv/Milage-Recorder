@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, MilageRecorder!</string>
+    <string name="dateinput_header">Enter date:</string>
+    <string name="kilometerinput_header">Enter kilometer driven:</string>
+    <string name="litersfilled_header">Enter amount filled:</string>
+    <string name="app_name">MilageRecorder</string>
+    <string name="submitbuttontext">Submit</string>
+    
+</resources>
