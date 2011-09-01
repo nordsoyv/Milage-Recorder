@@ -1,5 +1,7 @@
 package com.visma.home.milagerecorder;
 
+import java.text.DecimalFormat;
+
 import android.content.Context;
 import android.text.format.DateFormat;
 import android.view.InflateException;
@@ -13,50 +15,48 @@ import com.visma.home.milagerecorder.db.MilageRecord;
 
 public class MilageRecordArrayAdapter extends ArrayAdapter<MilageRecord> {
 
-	
-	 
 	public MilageRecordArrayAdapter(Context context, int textViewResourceId) {
 		super(context, textViewResourceId);
 
 	}
 
-	public MilageRecordArrayAdapter(DisplayRecords displayRecords,
-			int recordview, int recordoutput) {
-		// TODO Auto-generated constructor stub
+	public MilageRecordArrayAdapter(DisplayRecords displayRecords, int recordview, int recordoutput) {
 		super(displayRecords, recordview, recordoutput);
 	}
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		LayoutInflater inflater = (LayoutInflater)this.getContext().getSystemService
-	      (Context.LAYOUT_INFLATER_SERVICE);
+		LayoutInflater inflater = (LayoutInflater) this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		View recordView;
-		try{
-		 recordView =  inflater.inflate(R.layout.recordview, null);
-		
-		}catch(InflateException ex){
-			ex.printStackTrace();
-			return null;
-		}
+		recordView = inflater.inflate(R.layout.recordview, null);
 		MilageRecord currRecord = this.getItem(position);
-		/*if (convertView == null) {
-			textView = new TextView(this.getContext());
-		} else {
-			textView = (TextView) convertView;
-		} */
-		TextView recordOutputView =  (TextView) recordView.findViewById(R.id.RecordOutput);
-		
-		String result;
-		if (currRecord.getDato() != null) {
-			result = (String) DateFormat.format("dd/MM/yyyy", currRecord
-					.getDato());
-		} else {
-			result = "###";
-		}
 
-		result += " , " + Float.toString(currRecord.getDistance());
-		recordOutputView.setText(result);
+		TextView dateOutputView = (TextView) recordView.findViewById(R.id.DateOutput);
+		TextView literOutputView = (TextView) recordView.findViewById(R.id.LiterOutput);
+		TextView milageOutputView = (TextView) recordView.findViewById(R.id.MilageOutput);
+		TextView distanceOutputView = (TextView) recordView.findViewById(R.id.DistanceOutput);
+		
+		
+		String formattedDate;
+		if (currRecord.getDato() != null) {
+			formattedDate = (String) DateFormat.format("dd/MM/yyyy", currRecord.getDato());
+		} else {
+			formattedDate = "###";
+		}
+		DecimalFormat myFormatter = new DecimalFormat("###.##");
+		
+		dateOutputView.setText(formattedDate);
+		
+		literOutputView.setText(myFormatter.format(currRecord.getLiters())+  " l");
+		distanceOutputView.setText(myFormatter.format(currRecord.getDistance())+  " km");
+		
+		milageOutputView.setText(myFormatter.format( currRecord.getLiters() /currRecord.getDistance()*10) + " l/km*10");
+		
+		
+		
 		return recordView;
 	}
 
 }
+
+

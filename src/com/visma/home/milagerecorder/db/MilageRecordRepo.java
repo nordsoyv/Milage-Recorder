@@ -30,7 +30,7 @@ public class MilageRecordRepo {
 
 	private static final String DATABASE_NAME = "milagerecords";
 	private static final String DATABASE_TABLE = "records";
-	private static final int DATABASE_VERSION = 3;
+	private static final int DATABASE_VERSION = 4;
 	private static final String TAG = "MilageRecordRepo";
 
 	private final Context mCtx;
