@@ -25,7 +25,7 @@ public class DisplayRecords extends ListActivity {
 	private void fillData() {
 		MilageRecordRepo repo = new MilageRecordRepo(this);
 		repo.open();
-		MilageRecordArrayAdapter listAdapter = new MilageRecordArrayAdapter(this, R.layout.recordview, R.id.RecordOutput);
+		MilageRecordArrayAdapter listAdapter = new MilageRecordArrayAdapter(this, R.layout.recordview);
 		List<MilageRecord> records =   repo.fetchAllMilageRecords();
 		for (MilageRecord milageRecord : records) {
 			listAdapter.add(milageRecord);
