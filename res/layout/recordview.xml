@@ -5,23 +5,18 @@
 
 	<LinearLayout android:orientation="horizontal"
 		android:layout_width="fill_parent" android:layout_height="fill_parent">
-		<TextView android:layout_width="wrap_content" android:gravity="center_vertical"
-			android:layout_height="fill_parent" android:text="22/23/2011" android:textSize="20px"
-			android:id="@+id/DateOutput" />
-		<LinearLayout android:orientation="vertical"
-			android:layout_width="wrap_content" android:layout_height="wrap_content">
-			<TextView android:layout_width="fill_parent"
-				android:layout_height="wrap_content" android:text="12 l"
-				android:id="@+id/LiterOutput" />
-			<TextView android:layout_width="fill_parent"
-				android:layout_height="wrap_content" android:text="232 km"
-				android:id="@+id/DistanceOutput" />
-		</LinearLayout>
-		<TextView android:layout_width="wrap_content" android:gravity="center_vertical"
-			android:layout_height="wrap_content" android:text="0.6 liter/km * 10"
-			android:id="@+id/MilageOutput"  android:textSize="20px" />
+		<TextView android:layout_width="wrap_content"
+			android:layout_height="fill_parent" android:width="75px"
+			android:text="22/23/2011" android:id="@+id/DateOutput" />
+
+		<TextView android:layout_width="wrap_content" android:width="70px"
+			android:gravity="right" android:layout_height="wrap_content"
+			android:text="232 km" android:id="@+id/DistanceOutput" />
+		<TextView android:layout_width="wrap_content" android:width="50px"
+			android:gravity="right" android:layout_height="wrap_content"
+			android:text="12 l" android:id="@+id/LiterOutput" />
+		<TextView android:layout_width="wrap_content" android:width="100px"
+			android:gravity="right" android:layout_height="wrap_content"
+			android:text="0.6 liter/km * 10" android:id="@+id/MilageOutput" />
 	</LinearLayout>
-
-
-
 </LinearLayout>

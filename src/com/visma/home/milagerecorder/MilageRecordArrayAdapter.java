@@ -47,10 +47,11 @@ public class MilageRecordArrayAdapter extends ArrayAdapter<MilageRecord> {
 
 		dateOutputView.setText(formattedDate);
 
-		literOutputView.setText(myFormatter.format(currRecord.getLiters()) + " l");
-		distanceOutputView.setText(myFormatter.format(currRecord.getDistance()) + " km");
+		literOutputView.setText(myFormatter.format(currRecord.getLiters()) + "l");
+		
+		distanceOutputView.setText(myFormatter.format(currRecord.getDistance()) + "km");
 
-		milageOutputView.setText(myFormatter.format(currRecord.getLiters() / currRecord.getDistance() * 10) + " l/km*10");
+		milageOutputView.setText(myFormatter.format(currRecord.getLiters() / currRecord.getDistance() * 10) + " l/10km");
 
 		return recordView;
 	}
