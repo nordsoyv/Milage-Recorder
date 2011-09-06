@@ -23,28 +23,5 @@
 	</LinearLayout>
 
 
-	<!--
-		<DatePicker android:id="@+id/DatePicker"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"></DatePicker> <TextView
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:text="@string/kilometerinput_header" /> <EditText
-		android:text="" android:id="@+id/KilometerInput"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:inputType="numberDecimal"></EditText> <TextView
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:text="@string/litersfilled_header" /> <EditText
-		android:text="" android:id="@+id/LitersFilledInput"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:inputType="numberDecimal"></EditText> <Button
-		android:text="@string/submitbuttontext" android:id="@+id/SubmitButton"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"></Button> <TextView
-		android:layout_width="fill_parent" android:id="@+id/outputField"
-		android:layout_height="wrap_content" android:text="" />
-	-->
+
 </LinearLayout>
