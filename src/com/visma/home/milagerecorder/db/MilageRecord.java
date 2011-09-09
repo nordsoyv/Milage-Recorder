@@ -2,19 +2,31 @@ package com.visma.home.milagerecorder.db;
 
 import java.util.Date;
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+
+@DatabaseTable(tableName = "records")
 public class MilageRecord {
+	
+	@DatabaseField(generatedId = true)
 	private int id;
-	private Date dato;
+	
+	@DatabaseField
+	private long dato;
+	
+	@DatabaseField
 	private float distance;
+	
+	@DatabaseField
 	private float liters;
 
 	public MilageRecord(){
-		id = -1;
+		
 	}
 	
 	public MilageRecord(int id, Date dato, float distance, float liters){
 		this.id = id;
-		this.dato = dato;
+		this.dato = dato.getTime();
 		this.distance = distance;
 		this.liters = liters;
 	}
@@ -28,11 +40,11 @@ public class MilageRecord {
 	}
 
 	public Date getDato() {
-		return dato;
+		return new Date(dato);
 	}
 
 	public void setDato(Date dato) {
-		this.dato = dato;
+		this.dato = dato.getTime();
 	}
 
 	public float getDistance() {

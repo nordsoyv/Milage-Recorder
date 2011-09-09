@@ -1,22 +1,22 @@
 package com.visma.home.milagerecorder.activity;
 
-import android.app.ListActivity;
+import java.sql.SQLException;
+import java.util.List;
+
 import android.os.Bundle;
 
+import com.j256.ormlite.android.apptools.OrmLiteBaseListActivity;
+import com.j256.ormlite.dao.Dao;
 import com.visma.home.milagerecorder.MilageRecordArrayAdapter;
-import com.visma.home.milagerecorder.MilageRecorderException;
+import com.visma.home.milagerecorder.db.DatabaseHelper;
 import com.visma.home.milagerecorder.db.MilageRecord;
-import com.visma.home.milagerecorder.messages.FetchAllMilageRecordsRequest;
-import com.visma.home.milagerecorder.messages.FetchAllMilageRecordsResponse;
-import com.visma.home.milagerecorder.service.ServiceFactorySingelton;
 
-public class DisplayRecords extends ListActivity {
+public class DisplayRecords extends OrmLiteBaseListActivity<DatabaseHelper> {
 
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
 		fillData();
 
 	}
@@ -24,13 +24,15 @@ public class DisplayRecords extends ListActivity {
 	private void fillData() {
 		MilageRecordArrayAdapter listAdapter = new MilageRecordArrayAdapter(this, R.layout.recordview);
 		try {
-			FetchAllMilageRecordsResponse response = (FetchAllMilageRecordsResponse) ServiceFactorySingelton.getInstance().getServiceFactory(this)
-					.dispatchRequest(new FetchAllMilageRecordsRequest());
-			for (MilageRecord milageRecord : response.getMilageRecords()) {
+			Dao<MilageRecord, Integer> dao = this.getHelper().getMilageRecordDao();
+			List<MilageRecord> records = dao.queryForAll();
+//			/FetchAllMilageRecordsResponse response = (FetchAllMilageRecordsResponse) ServiceFactorySingelton.getInstance().getServiceFactory(this)
+//					.dispatchRequest(new FetchAllMilageRecordsRequest());
+			for (MilageRecord milageRecord : records) {
 				listAdapter.add(milageRecord);
 			}
 			setListAdapter(listAdapter);
-		} catch (MilageRecorderException e) {
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
