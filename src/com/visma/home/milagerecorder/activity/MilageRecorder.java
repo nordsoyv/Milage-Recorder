@@ -1,7 +1,5 @@
 package com.visma.home.milagerecorder.activity;
 
-import com.visma.home.milagerecorder.service.ServiceFactorySingelton;
-
 import android.app.TabActivity;
 import android.content.Intent;
 import android.content.res.Resources;

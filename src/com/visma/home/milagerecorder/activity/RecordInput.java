@@ -9,29 +9,21 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.visma.home.milagerecorder.MilageRecorderException;
-import com.visma.home.milagerecorder.db.MilageRecordRepo;
 import com.visma.home.milagerecorder.messages.AddMilageRecordRequest;
-import com.visma.home.milagerecorder.service.AddMilageRecordService;
 import com.visma.home.milagerecorder.service.ServiceFactorySingelton;
-import com.visma.home.milagerecorder.service.ServiceNames;
 
 public class RecordInput extends Activity {
 	private EditText kilometerField;
 	private EditText litersFilledField;
-	private TextView outputField;
 	private DatePicker datetimePicker;
-
-	private MilageRecordRepo repo;
 
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.inputrecord);
-		repo = new MilageRecordRepo(this);
 		setupControls();
 
 	}
@@ -39,7 +31,6 @@ public class RecordInput extends Activity {
 	private void setupControls() {
 		kilometerField = (EditText) findViewById(R.id.KilometerInput);
 		litersFilledField = (EditText) findViewById(R.id.LitersFilledInput);
-		outputField = (TextView) findViewById(R.id.outputField);
 		datetimePicker = (DatePicker) findViewById(R.id.DatePicker);
 		Button submitButton = (Button) findViewById(R.id.SubmitButton);
 

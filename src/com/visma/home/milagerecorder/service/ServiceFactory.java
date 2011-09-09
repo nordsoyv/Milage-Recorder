@@ -20,6 +20,7 @@ public class ServiceFactory {
 	private AddMilageRecordService addMilageService = null;
 	private FetchAllMilageRecordsService fetchAllMilageRecordsService;
 
+	@SuppressWarnings("unchecked")
 	public AbstractResponse dispatchRequest(AbstractRequest request) throws MilageRecorderException{
 		AbstractService<AbstractRequest, AbstractResponse> service = (AbstractService<AbstractRequest, AbstractResponse>) getService(request.getServiceName());
 		return service.perform(request);
