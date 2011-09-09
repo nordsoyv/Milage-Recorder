@@ -55,10 +55,7 @@ public class RecordInput extends Activity {
 
 	private void handleButtonClick() {
 
-		AddMilageRecordService service;
 		try {
-			service = (AddMilageRecordService) ServiceFactorySingelton.getInstance().getServiceFactory().getService(ServiceNames.ADD_MILAGE_RECORD);
-
 			float kilometers = Float.parseFloat(kilometerField.getText().toString());
 			float liters = Float.parseFloat(litersFilledField.getText().toString());
 			Date currentDate = getEnteredDate();
@@ -67,7 +64,7 @@ public class RecordInput extends Activity {
 			request.setDate(currentDate);
 			request.setKilometers(kilometers);
 			request.setLiters(liters);
-			service.perform(request);
+			ServiceFactorySingelton.getInstance().getServiceFactory(this).dispatchRequest(request);
 		} catch (MilageRecorderException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

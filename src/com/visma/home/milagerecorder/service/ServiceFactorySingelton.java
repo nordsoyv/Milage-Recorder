@@ -21,15 +21,16 @@ public class ServiceFactorySingelton {
 		return instance;
 	}
 
-	public ServiceFactory getServiceFactory() throws MilageRecorderException {
+	public ServiceFactory getServiceFactory(Context ctx) throws MilageRecorderException {
 		if (serviceFactory == null) {
-			throw new MilageRecorderException("getServiceFactory called before factory created.");
+			serviceFactory = new ServiceFactory();
 		}
+		serviceFactory.setContext(ctx);
 		return serviceFactory;
 	}
 
-	public void CreateServiceFactory(Context ctx) {
-		serviceFactory = new ServiceFactory(ctx);
-	}
+//	public void CreateServiceFactory(Context ctx) {
+//		serviceFactory = new ServiceFactory(ctx);
+//	}
 
 }
